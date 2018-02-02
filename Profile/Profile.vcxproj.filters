@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Include">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Source">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Include\profile">
+      <UniqueIdentifier>{b1c2543c-396b-4f5d-b5b3-55f5abe85a01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\profile">
+      <UniqueIdentifier>{9edc3d2b-c921-40d7-9443-a8589aa676ed}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\profile\ProfileConsumerNull.h">
+      <Filter>Include\profile</Filter>
+    </ClInclude>
+    <ClInclude Include="include\profile\ProfileFunction.h">
+      <Filter>Include\profile</Filter>
+    </ClInclude>
+    <ClInclude Include="include\profile\ProfileSample.h">
+      <Filter>Include\profile</Filter>
+    </ClInclude>
+    <ClInclude Include="include\profile\ProfileSwitch.h">
+      <Filter>Include\profile</Filter>
+    </ClInclude>
+    <ClInclude Include="include\profile\ProfileThread.h">
+      <Filter>Include\profile</Filter>
+    </ClInclude>
+    <ClInclude Include="include\profile\IProfileConsumer.h">
+      <Filter>Include\profile</Filter>
+    </ClInclude>
+    <ClInclude Include="include\profile\ProfileConsumerFile.h">
+      <Filter>Include\profile</Filter>
+    </ClInclude>
+    <ClInclude Include="include\profile\Profile.h">
+      <Filter>Include\profile</Filter>
+    </ClInclude>
+    <ClInclude Include="include\profile\ProfileThreadLocal.h">
+      <Filter>Include\profile</Filter>
+    </ClInclude>
+    <ClInclude Include="include\profile\ProfileCore.h">
+      <Filter>Include\profile</Filter>
+    </ClInclude>
+    <ClInclude Include="include\profile\ProfileTimer.h">
+      <Filter>Include\profile</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="source\ProfileSample.cpp">
+      <Filter>Source\profile</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ProfileThread.cpp">
+      <Filter>Source\profile</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ProfileConsumerFile.cpp">
+      <Filter>Source\profile</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ProfileFunction.cpp">
+      <Filter>Source\profile</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ProfileConsumerNull.cpp">
+      <Filter>Source\profile</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ProfileCore.cpp">
+      <Filter>Source\profile</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ProfileTimer.cpp">
+      <Filter>Source\profile</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
