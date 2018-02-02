@@ -18,7 +18,7 @@ Intrusive Multi-threaded C++ Performance Profiling
 
 * Visualiser 
 
-  *@todo link to the visualiser project*
+  *Profile data can be rendered in this [profile visualiser](https://github.com/JimKnowler/profile-visualiser)
 
 ## Requirements
 
@@ -109,6 +109,12 @@ By default, the profiler generates [text profile data as specified by the visual
 
 Profile data gathered with this profiler can be [viewed in this profiler visualiser](https://github.com/JimKnowler/profile-visualiser)
 
-![Screenshot 1](docs/screenshot_1.png "Screenshot 1")
-![Screenshot 2](docs/screenshot_2.png "Screenshot 2")
-![Screenshot 3](docs/screenshot_3.png "Screenshot 3")
+<div style="width:100%;display:flex;">
+
+![Screenshot 1](https://raw.githubusercontent.com/JimKnowler/profile-visualiser/master/docs/screenshot-1.png "Screenshot 1")
+
+![Screenshot 2](https://raw.githubusercontent.com/JimKnowler/profile-visualiser/master/docs/screenshot-2.png "Screenshot 2")
+
+![Screenshot 3](https://raw.githubusercontent.com/JimKnowler/profile-visualiser/master/docs/screenshot-3.png "Screenshot 3")
+
+</div>
