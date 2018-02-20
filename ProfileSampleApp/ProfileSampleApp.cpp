@@ -16,7 +16,7 @@ void workerThreadEntry(int threadIndex, const std::string& threadLabel);
 int getRandomNumber(int range);
 std::string createWorkerThreadName(int threadIndex);
 
-const int kTestDurationMilliseconds = 5 * 1000;
+const int kTestDurationMilliseconds = 20 * 1000;
 const int kNumThreads = 10;
 const int kMaxCallDepth = 20;
 
@@ -74,18 +74,18 @@ void mockFunction(int milliseconds, int callDepth) {
 		while (remaining > 0) {
 			int duration;
 			
-			duration = getRandomNumber(remaining / 16);
+			duration = getRandomNumber(remaining / 64);
 			std::this_thread::sleep_for(std::chrono::milliseconds(duration));
 			remaining -= duration;
 
 			if (remaining > 0) {
-				duration = getRandomNumber(remaining / 4);
+				duration = getRandomNumber(remaining / 16);
 				mockFunction(duration, callDepth - 1);
 				remaining -= duration;
 			}
 
 			if (remaining > 0) {
-				duration = getRandomNumber(remaining / 16);
+				duration = getRandomNumber(remaining / 64);
 				std::this_thread::sleep_for(std::chrono::milliseconds(duration));
 				remaining -= duration;
 			}
