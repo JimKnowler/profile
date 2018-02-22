@@ -17,4 +17,12 @@ namespace profile
 	void ProfileConsumerNull::onProfileFinishSample(uint64_t threadID, uint64_t functionID, uint64_t time)
 	{
 	}
+
+	void ProfileConsumerNull::onProfileRegisterEvent(uint64_t threadID, uint64_t eventID, const char* eventLabel)
+	{
+	}
+
+	void ProfileConsumerNull::onProfileEmitEvent(uint64_t threadID, uint64_t eventID, uint64_t time)
+	{
+	}
 }

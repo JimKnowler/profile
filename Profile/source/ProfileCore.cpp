@@ -17,6 +17,7 @@ namespace profile
 		PROFILE_THREAD_LOCAL uint64_t threadID;					/// @brief unique ID for the current thread
 
 		PROFILE_THREAD_LOCAL uint64_t functionCounter;			/// @brief used to issue unique ID to each function in a thread
+		PROFILE_THREAD_LOCAL uint64_t eventCounter;				/// @brief used to issue unique ID to each event in a thread
 
 		std::unique_ptr<IProfileConsumer> profileConsumer = std::unique_ptr<IProfileConsumer>(new ProfileConsumerNull());
 
@@ -39,6 +40,7 @@ namespace profile
 		profileConsumer->onProfileRegisterThread(threadID, threadLabel);
 
 		functionCounter = 0;
+		eventCounter = 0;
 
 		return threadID;
 	}
@@ -68,5 +70,23 @@ namespace profile
 		uint64_t time = timer.getElapsedMicroseconds();
 
 		profileConsumer->onProfileFinishSample(threadID, functionID, time);
+	}
+
+	uint64_t registerEvent(const char* eventLabel)
+	{
+		uint64_t eventID = eventCounter++;
+
+		profileConsumer->onProfileRegisterEvent(threadID, eventID, eventLabel);
+
+		return eventID;
+	}
+
+	void emitEvent(const ::profile::ProfileEvent& event)
+	{
+		uint64_t eventID = event.getID();
+
+		uint64_t time = timer.getElapsedMicroseconds();
+
+		profileConsumer->onProfileEmitEvent(threadID, eventID, time);
 	}
 }

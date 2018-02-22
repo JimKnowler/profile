@@ -23,6 +23,7 @@
     <ClInclude Include="include\profile\ProfileConsumerFile.h" />
     <ClInclude Include="include\profile\ProfileConsumerNull.h" />
     <ClInclude Include="include\profile\ProfileCore.h" />
+    <ClInclude Include="include\profile\ProfileEvent.h" />
     <ClInclude Include="include\profile\ProfileFunction.h" />
     <ClInclude Include="include\profile\Profile.h" />
     <ClInclude Include="include\profile\ProfileSample.h" />
@@ -34,6 +35,7 @@
   <ItemGroup>
     <ClCompile Include="source\ProfileConsumerFile.cpp" />
     <ClCompile Include="source\ProfileConsumerNull.cpp" />
+    <ClCompile Include="source\ProfileEvent.cpp" />
     <ClCompile Include="source\ProfileFunction.cpp" />
     <ClCompile Include="source\ProfileCore.cpp" />
     <ClCompile Include="source\ProfileSample.cpp" />

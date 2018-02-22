@@ -38,4 +38,18 @@ namespace profile
 
 		file << "E " << threadID << " " << functionID << " " << time << "\n";
 	}
+
+	void ProfileConsumerFile::onProfileRegisterEvent(uint64_t threadID, uint64_t eventID, const char* eventLabel)
+	{
+		std::lock_guard<std::mutex> autoLock(mutex);
+
+		file << "V " << threadID << " " << eventID << " " << eventLabel << "\n";
+	}
+
+	void ProfileConsumerFile::onProfileEmitEvent(uint64_t threadID, uint64_t eventID, uint64_t time)
+	{
+		std::lock_guard<std::mutex> autoLock(mutex);
+
+		file << "Y " << threadID << " " << eventID << " " << time << "\n";
+	}
 }

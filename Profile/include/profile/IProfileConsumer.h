@@ -23,5 +23,11 @@ namespace profile
 
 		/// @brief Finish a sample of a function
 		virtual void onProfileFinishSample(uint64_t threadID, uint64_t functionID, uint64_t time) = 0;
+
+		/// @brief Register an Event for a thread
+		virtual void onProfileRegisterEvent(uint64_t threadID, uint64_t eventID, const char* eventLabel) = 0;
+
+		/// @brief Emit an event
+		virtual void onProfileEmitEvent(uint64_t threadID, uint64_t eventID, uint64_t time) = 0;
 	};
 }

@@ -84,6 +84,11 @@ void mockFunction(int milliseconds, int callDepth) {
 				remaining -= duration;
 			}
 
+			int randomNumber = getRandomNumber(1000);
+			if (1 == randomNumber) {
+				PROFILE_EVENT("A Test Event");
+			}
+
 			if (remaining > 0) {
 				duration = getRandomNumber(remaining / 64);
 				std::this_thread::sleep_for(std::chrono::milliseconds(duration));
@@ -101,6 +106,10 @@ void mockFunction(int milliseconds, int callDepth) {
 int getRandomNumber(int range) {
 	PROFILE_FUNCTION();
 
+	if (range <= 1) {
+		return 1;
+	}
+
 	static std::mutex mutex;
 	{
 		PROFILE_SCOPE("mutex acquired");
@@ -111,7 +120,7 @@ int getRandomNumber(int range) {
 		return (std::rand() % range) + 1;
 #else
 		static std::default_random_engine e{};
-		static std::uniform_int_distribution<int> d{ 1, range };
+		std::uniform_int_distribution<int> d{ 1, range };
 		return d(e);
 	}
 #endif

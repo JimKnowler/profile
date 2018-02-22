@@ -9,9 +9,11 @@ namespace profile
 	class ProfileConsumerNull : public IProfileConsumer
 	{
 	public: // IProfileConsumer
-		virtual void onProfileRegisterThread(uint64_t threadID, const char* threadLabel);
-		virtual void onProfileRegisterFunction(uint64_t threadID, uint64_t functionID, const char* functionLabel);
-		virtual void onProfileStartSample(uint64_t threadID, uint64_t functionID, uint64_t time);
-		virtual void onProfileFinishSample(uint64_t threadID, uint64_t functionID, uint64_t time);
+		void onProfileRegisterThread(uint64_t threadID, const char* threadLabel) override;
+		void onProfileRegisterFunction(uint64_t threadID, uint64_t functionID, const char* functionLabel) override;
+		void onProfileStartSample(uint64_t threadID, uint64_t functionID, uint64_t time) override;
+		void onProfileFinishSample(uint64_t threadID, uint64_t functionID, uint64_t time) override;
+		void onProfileRegisterEvent(uint64_t threadID, uint64_t eventID, const char* eventLabel) override;
+		void onProfileEmitEvent(uint64_t threadID, uint64_t eventID, uint64_t time) override;
 	};
 }
