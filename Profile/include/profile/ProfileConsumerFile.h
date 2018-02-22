@@ -22,6 +22,8 @@ namespace profile
 		void onProfileFinishSample(uint64_t threadID, uint64_t functionID, uint64_t time) override;
 		void onProfileRegisterEvent(uint64_t threadID, uint64_t eventID, const char* eventLabel) override;
 		void onProfileEmitEvent(uint64_t threadID, uint64_t eventID, uint64_t time) override;
+		void onProfileRegisterCounter(uint64_t counterID, const char* counterLabel) override;
+		void onProfileEmitCounterValue(uint64_t counterID, int value) override;
 
 	private:
 		std::mutex mutex;

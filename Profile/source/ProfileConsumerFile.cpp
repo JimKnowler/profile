@@ -52,4 +52,19 @@ namespace profile
 
 		file << "Y " << threadID << " " << eventID << " " << time << "\n";
 	}
+
+	void ProfileConsumerFile::onProfileRegisterCounter(uint64_t counterID, const char* counterLabel)
+	{
+		std::lock_guard<std::mutex> autoLock(mutex);
+
+		file << "C " << counterID << " " << counterLabel << "\n";
+	}
+
+	void ProfileConsumerFile::onProfileEmitCounterValue(uint64_t counterID, int value)
+	{
+		std::lock_guard<std::mutex> autoLock(mutex);
+
+		file << "D " << counterID << " " << " " << value << "\n";
+	}
+
 }

@@ -13,7 +13,6 @@ namespace profile
 	{
 		uint64_t threadCount = 0;								/// @brief used to issue unique ID to each thread
 		std::mutex mutexThreadCounter;							/// @brief used to ensure thread-safe access to threadCount
-
 		PROFILE_THREAD_LOCAL uint64_t threadID;					/// @brief unique ID for the current thread
 
 		PROFILE_THREAD_LOCAL uint64_t functionCounter;			/// @brief used to issue unique ID to each function in a thread
@@ -22,6 +21,9 @@ namespace profile
 		std::unique_ptr<IProfileConsumer> profileConsumer = std::unique_ptr<IProfileConsumer>(new ProfileConsumerNull());
 
 		ProfileTimer timer;
+
+		uint64_t counterCount = 0;
+		std::mutex mutexCounter;								/// @brief used to issue unique ID to each counter
 	}
 
 	void init()
@@ -81,7 +83,7 @@ namespace profile
 		return eventID;
 	}
 
-	void emitEvent(const ::profile::ProfileEvent& event)
+	void emitEvent(const ProfileEvent& event)
 	{
 		uint64_t eventID = event.getID();
 
@@ -89,4 +91,28 @@ namespace profile
 
 		profileConsumer->onProfileEmitEvent(threadID, eventID, time);
 	}
+
+	uint64_t registerCounter(const char* counterLabel)
+	{
+		uint64_t counterID;
+
+		{
+			std::lock_guard<std::mutex> autoLock(mutexCounter);
+			counterID = counterCount++;
+		}
+
+		profileConsumer->onProfileRegisterCounter(counterID, counterLabel);
+		
+		return counterID;
+	}
+
+	void emitCounter(const ProfileCounter& counter)
+	{
+		uint64_t counterID = counter.getID();
+
+		int value = counter.getValue();
+
+		profileConsumer->onProfileEmitCounterValue(counterID, value);
+	}
+
 }

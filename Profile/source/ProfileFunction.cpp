@@ -1,5 +1,5 @@
 #include "profile/ProfileFunction.h"
-#include "profile/Profile.h"
+#include "profile/ProfileCore.h"
 
 namespace profile
 {

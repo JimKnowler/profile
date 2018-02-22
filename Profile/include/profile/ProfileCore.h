@@ -5,6 +5,7 @@
 #include "profile/ProfileThread.h"
 #include "profile/ProfileThreadLocal.h"
 #include "profile/ProfileEvent.h"
+#include "profile/ProfileCounter.h"
 
 namespace profile
 {
@@ -38,4 +39,13 @@ namespace profile
 	/// @brief Emit an event at the current time
 	/// @note invoked by PROFILE_EVENT()
 	void emitEvent(const ::profile::ProfileEvent& event);
+
+	/// @brief register a counter
+	/// @return unique ID for this counter
+	/// @note invoked by PROFILE_COUNTER()
+	uint64_t registerCounter(const char* counterLabel);
+
+	/// @brief Emit a value for a counter
+	/// @note invoked by PROFILE_COUNTER_SET() / PROFILE_COUNTER_INC() / PROFILE_COUNTER_DEC()
+	void emitCounter(const ::profile::ProfileCounter& counter);
 }

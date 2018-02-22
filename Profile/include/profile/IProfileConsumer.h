@@ -29,5 +29,11 @@ namespace profile
 
 		/// @brief Emit an event
 		virtual void onProfileEmitEvent(uint64_t threadID, uint64_t eventID, uint64_t time) = 0;
+
+		/// @brief Register a counter
+		virtual void onProfileRegisterCounter(uint64_t counterID, const char* counterLabel) = 0;
+
+		/// @brief Emit a value for a counter
+		virtual void onProfileEmitCounterValue(uint64_t counterID, int value) = 0;
 	};
 }

@@ -3,6 +3,7 @@
 #include "profile/ProfileCore.h"
 #include "profile/ProfileSwitch.h"
 #include "profile/ProfileEvent.h"
+#include "profile/ProfileCounter.h"
 
 #include <thread>
 #include <stdint.h>
@@ -32,12 +33,28 @@
 		::profile::ProfileEvent __profileEvent(__profile_event_id, __label);							\
 		::profile::emitEvent(__profileEvent);
 
+# define PROFILE_COUNTER(__label, __counter)															\
+		::profile::ProfileCounter(__label) __counter;
+
+# define PROFILE_COUNTER_SET(__counter, __value)														\
+		__counter = __value;
+
+# define PROFILE_COUNTER_INC(__counter, __value)														\
+		__counter += __value;
+
+# define PROFILE_COUNTER_DEC(__counter, __dec)															\
+		__counter -= __value;
+
 #else
 
 # define PROFILE_INIT()
-# define PROFILE_THREAD(_label)
+# define PROFILE_THREAD(__label)
 # define PROFILE_FUNCTION() 
-# define PROFILE_SCOPE(_label)
-# define PROFILE_EVENT(_label)
+# define PROFILE_SCOPE(__label)
+# define PROFILE_EVENT(__label)
+# define PROFILE_COUNTER(__label, __counter)
+# define PROFILE_COUNTER_SET(__counter, __value)
+# define PROFILE_COUNTER_INC(__counter, __value)
+# define PROFILE_COUNTER_DEC(__counter, __dec)
 
 #endif

@@ -25,4 +25,13 @@ namespace profile
 	void ProfileConsumerNull::onProfileEmitEvent(uint64_t threadID, uint64_t eventID, uint64_t time)
 	{
 	}
+
+	void ProfileConsumerNull::onProfileRegisterCounter(uint64_t counterID, const char* counterLabel)
+	{
+	}
+
+	void ProfileConsumerNull::onProfileEmitCounterValue(uint64_t counterID, int value)
+	{
+	}
+
 }

@@ -53,6 +53,9 @@
     <ClInclude Include="include\profile\ProfileEvent.h">
       <Filter>Include\profile</Filter>
     </ClInclude>
+    <ClInclude Include="include\profile\ProfileCounter.h">
+      <Filter>Include\profile</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\ProfileSample.cpp">
@@ -77,6 +80,9 @@
       <Filter>Source\profile</Filter>
     </ClCompile>
     <ClCompile Include="source\ProfileEvent.cpp">
+      <Filter>Source\profile</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ProfileCounter.cpp">
       <Filter>Source\profile</Filter>
     </ClCompile>
   </ItemGroup>
