@@ -60,11 +60,11 @@ namespace profile
 		file << "C " << counterID << " " << counterLabel << "\n";
 	}
 
-	void ProfileConsumerFile::onProfileEmitCounterValue(uint64_t counterID, int value)
+	void ProfileConsumerFile::onProfileEmitCounterValue(uint64_t counterID, uint64_t time, int value)
 	{
 		std::lock_guard<std::mutex> autoLock(mutex);
 
-		file << "D " << counterID << " " << " " << value << "\n";
+		file << "D " << counterID << " " << time << " " << value << "\n";
 	}
 
 }

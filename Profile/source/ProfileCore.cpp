@@ -110,9 +110,10 @@ namespace profile
 	{
 		uint64_t counterID = counter.getID();
 
+		uint64_t time = timer.getElapsedMicroseconds();
 		int value = counter.getValue();
 
-		profileConsumer->onProfileEmitCounterValue(counterID, value);
+		profileConsumer->onProfileEmitCounterValue(counterID, time, value);
 	}
 
 }

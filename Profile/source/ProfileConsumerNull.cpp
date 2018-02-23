@@ -30,7 +30,7 @@ namespace profile
 	{
 	}
 
-	void ProfileConsumerNull::onProfileEmitCounterValue(uint64_t counterID, int value)
+	void ProfileConsumerNull::onProfileEmitCounterValue(uint64_t counterID, uint64_t time, int value)
 	{
 	}
 

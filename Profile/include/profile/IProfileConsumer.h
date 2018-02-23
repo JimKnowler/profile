@@ -34,6 +34,6 @@ namespace profile
 		virtual void onProfileRegisterCounter(uint64_t counterID, const char* counterLabel) = 0;
 
 		/// @brief Emit a value for a counter
-		virtual void onProfileEmitCounterValue(uint64_t counterID, int value) = 0;
+		virtual void onProfileEmitCounterValue(uint64_t counterID, uint64_t time, int value) = 0;
 	};
 }
