@@ -144,7 +144,7 @@ void counterThreadEntry(int threadIndex, const std::string& threadLabel) {
 		int duration = getRandomNumber(32);
 		std::this_thread::sleep_for(std::chrono::milliseconds(duration));
 
-		int direction = getRandomNumber(2);
+		int direction = getRandomNumber(3);
 		int value = getRandomNumber(3);
 		if (direction == 1) {
 			if (threadIndex == 0) {
