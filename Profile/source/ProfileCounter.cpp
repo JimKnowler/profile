@@ -5,15 +5,19 @@ namespace profile
 {
 
 
-	ProfileCounter::ProfileCounter(const char* label)
+	ProfileCounter::ProfileCounter() : id(0), value(0)
 	{
-		id = ::profile::registerCounter(label);
-		value = 0;
 	}
 
 	ProfileCounter::~ProfileCounter()
 	{
 
+	}
+
+	void ProfileCounter::init(const char* label)
+	{
+		id = ::profile::registerCounter(label);
+		value = 0;
 	}
 
 	uint64_t ProfileCounter::getID() const

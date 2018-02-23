@@ -7,8 +7,11 @@ namespace profile
 	class ProfileCounter
 	{
 	public:
-		ProfileCounter(const char* label);
+		ProfileCounter();
 		~ProfileCounter();
+
+		/// @brief initialize the counter for use
+		void init(const char* label);
 		
 		/// @brief Set the counter to a specific counter
 		void operator=(int value);
