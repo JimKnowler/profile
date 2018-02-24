@@ -10,7 +10,11 @@ Intrusive Multi-threaded C++ Performance Profiling
 
 * Intrusive
 
-  *You choose which Threads, Functions and Scopes that you want to profile*
+  *You choose which Threads, Functions, Scopes, Events + Counters that you want to profile*
+
+* Compiled-out in Production builds
+
+  *You choose whether to include or compile-out profiling calls with a single define 'PROFILE_ENABLED'*
 
 * Default Text file output
 
@@ -99,6 +103,42 @@ void myFunction(int arg) {
 
     // @todo Do further work in this function
 }
+```
+
+* Mark any Event that you want to profile separately
+  * *Events are profiled separately for each thread*
+  * *Events are captured as a label and a single timestamp*
+
+``` C++
+  
+  if (someSignificantEventHasHappened) {
+    PROFILE_EVENT("my event label");
+  }
+
+```
+
+* Monitor a integer counter
+
+  *(note: the counter is initialised by default to 0, and can take any 32bit signed integer value)*
+
+``` C++
+
+// define an instance of the counter
+// 'myCounter' is a variable, so you can choose whether to make it a global, local or member variable
+PROFILE_COUNTER(myCounter);
+
+// initialise your instance of the counter
+PROFILE_COUNTER_INIT(myCounter, "my counter name");
+
+// set your counter to a specific value
+PROFILE_COUNTER_SET(myCounter, 29);
+
+// increment your counter by a specified value
+PROFILE_COUNTER_INC(myCounter, 2);
+
+// decrement your counter by a specified value
+PROFILE_COUNTER_DEC(myCounter, 4);
+
 ```
 
 ## Default Text Profile Output Format
