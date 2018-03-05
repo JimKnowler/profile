@@ -180,7 +180,7 @@ void myFunction(int arg) {
 
 ```
 
-* Monitor a integer counter
+* Monitor an integer counter
 
   *(note: the counter is initialised by default to 0, and can take any 32bit signed integer value)*
 
