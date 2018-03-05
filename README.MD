@@ -11,10 +11,10 @@ Intrusive Multi-threaded C++ Performance Profiling
 * Intrusive
 
   *You choose which Threads, Functions, Scopes, Events + Counters that you want to profile*
-  *
+  
 * Compiled-out in Production builds
 
-  *You choose whether to include or compile-out profiling calls with a single define 'PROFILE_ENABLED'
+  *You choose whether to include or compile-out profiling calls with a single define 'PROFILE_ENABLED'*
 
 * Default Text file output
 
@@ -51,6 +51,24 @@ The sample app should run for approximately 5-10 seconds and generate a profile 
 The profile log file can then be rendered in this [profile visualiser](https://github.com/JimKnowler/profile-visualiser)
 
 ``` python profiler.pyw --filename ../profile/ProfileSampleApp/profile.txt ```
+
+## Capabilities
+
+- Implemented intrusively with Macros, so you can control what parts of your C++ application are profiled
+
+- Profile Multiple Threads
+
+- Profile Multiple Function calls within each Thread#
+  - each Function call is captured as a start time + end time + function name
+  - profiler will track call stack of profiled functions
+
+- Profile Multiple Events within each Thread
+  - each Event is captured as a time + a label
+  - useful for tracking events such as state changes in your application
+
+- Profile Multiple Counters at global scope
+  - each counter is tracked as an 'int' value
+  - useful for tracking quantities such as number of jobs executing concurrently
 
 ## Usage
 
