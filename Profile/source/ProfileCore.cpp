@@ -5,14 +5,14 @@
 #include "profile/ProfileTimer.h"
 
 #include <memory>
+#include <atomic>
 
 namespace profile
 {
 	
 	namespace
 	{
-		uint64_t threadCount = 0;								/// @brief used to issue unique ID to each thread
-		std::mutex mutexThreadCounter;							/// @brief used to ensure thread-safe access to threadCount
+		std::atomic<uint64_t> threadCount = 0;					/// @brief used to issue unique ID to each thread
 		PROFILE_THREAD_LOCAL uint64_t threadID;					/// @brief unique ID for the current thread
 
 		PROFILE_THREAD_LOCAL uint64_t functionCounter;			/// @brief used to issue unique ID to each function in a thread
@@ -22,8 +22,7 @@ namespace profile
 
 		ProfileTimer timer;
 
-		uint64_t counterCount = 0;
-		std::mutex mutexCounter;								/// @brief used to issue unique ID to each counter
+		std::atomic<uint64_t> counterCount = 0;
 	}
 
 	void init()
@@ -34,10 +33,7 @@ namespace profile
 
 	uint64_t registerThread(const char* threadLabel)
 	{
-		{
-			std::lock_guard<std::mutex> autoLock(mutexThreadCounter);
-			threadID = threadCount++;
-		}
+		threadID = threadCount.fetch_add(1);
 
 		profileConsumer->onProfileRegisterThread(threadID, threadLabel);
 
@@ -94,12 +90,7 @@ namespace profile
 
 	uint64_t registerCounter(const char* counterLabel)
 	{
-		uint64_t counterID;
-
-		{
-			std::lock_guard<std::mutex> autoLock(mutexCounter);
-			counterID = counterCount++;
-		}
+		uint64_t counterID = counterCount.fetch_add(1);
 
 		profileConsumer->onProfileRegisterCounter(counterID, counterLabel);
 		
