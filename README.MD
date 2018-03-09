@@ -30,7 +30,7 @@ Intrusive Multi-threaded C++ Performance Profiling
 
 * Windows 
 
-* Visual Studio (tested so far on Visual Studio 2013)
+* Visual Studio (tested on Visual Studio 2017)
 
 ## Sample App
 
@@ -223,8 +223,6 @@ Profile data gathered with this profiler can be [viewed in this profiler visuali
 </div>
 
 ## TODO
-
-- Upgrade Visual Studio 2013 projects to Visual Studio 2017
 
 - Replace Windows Performance Timer code with Cross Platform std::chrono
 
