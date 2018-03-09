@@ -224,8 +224,6 @@ Profile data gathered with this profiler can be [viewed in this profiler visuali
 
 ## TODO
 
-- Replace Windows Performance Timer code with Cross Platform std::chrono
-
 - Replace Visual Studio with Cross Platform cmake
 
 - Remove mutex use in ProfileConsumerFile to prevent blocking when writing to file

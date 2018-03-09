@@ -7,42 +7,24 @@ namespace profile
 
 	ProfileTimer::ProfileTimer()
 	{
-		QueryPerformanceFrequency(&frequency);
-		QueryPerformanceCounter(&startTime);
+		start();
 	}
 
 	bool ProfileTimer::start()
 	{
-		QueryPerformanceCounter(&startTime);
+		startTime = clock.now();
 		return true;
-	}
-
-	uint64_t ProfileTimer::getStartTime()
-	{
-		int64_t time = int64_t(startTime.QuadPart);
-		return static_cast<uint64_t>(time);
-	}
-
-	float ProfileTimer::getElapsedTime()
-	{
-		LARGE_INTEGER endTime;
-		QueryPerformanceCounter(&endTime);
-
-		float elapsedTime = float(endTime.QuadPart - startTime.QuadPart);
-		elapsedTime /= float(frequency.QuadPart);
-
-		return elapsedTime;
 	}
 
 	uint64_t ProfileTimer::getElapsedMicroseconds()
 	{
-		LARGE_INTEGER endTime;
-		QueryPerformanceCounter(&endTime);
+		using namespace std::chrono;
+		
+		TimePointType now = clock.now();
 
-		int64_t elapsedTime = endTime.QuadPart - startTime.QuadPart;
-		elapsedTime *= 1000 * 1000;
-		elapsedTime /= frequency.QuadPart;
+		auto elapsed = now - startTime;
+		auto elapsedMicroseconds = duration_cast<microseconds>(elapsed);
 
-		return static_cast<uint64_t>(elapsedTime);
+		return elapsedMicroseconds.count();
 	}
 }
